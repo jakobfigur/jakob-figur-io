@@ -598,19 +598,44 @@ def page_experience():
     # Technical Proficiency
     st.markdown("<div class='spacer'></div>", unsafe_allow_html=True)
     st.markdown("## Technical Proficiency")
+    st.markdown("""
+    <p style='font-size: 1rem; margin-bottom: 2rem; color: var(--text-secondary);'>
+    Bridging strategic AI consulting with hands-on engineering execution.
+    </p>
+    """, unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown("""
         <div class='card'>
-        <h3 style='margin-top: 0;'>AI & Automation</h3>
+        <h3 style='margin-top: 0;'>AI Strategy & Quality Assurance</h3>
         <p>
-        • Large Language Models (GPT-4, Claude)<br>
-        • LangChain, LangGraph, RAG Systems<br>
-        • Prompt Engineering & Agent Design<br>
-        • Vector Databases & Semantic Search<br>
-        • Workflow Orchestration & Automation
+        <strong>Advanced Prompt Engineering</strong><br>
+        Designing high-precision prompts for complex business logic and multi-step reasoning tasks.<br><br>
+        
+        <strong>AI Quality Assurance</strong><br>
+        Specialist in designing and verifying AI test cases to ensure reliability. 
+        Proven impact: 80% workload reduction in onboarding processes.<br><br>
+        
+        <strong>Strategic AI Transformation</strong><br>
+        Authoring frameworks and concept papers for organizational "AI-First" transitions and long-term integration.
+        </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='card'>
+        <h3 style='margin-top: 0;'>Engineering & Architecture</h3>
+        <p>
+        <strong>Core Languages</strong><br>
+        Python, TypeScript, Node.js, Angular, PHP<br><br>
+        
+        <strong>Infrastructure & DevOps</strong><br>
+        CI/CD Pipelines (Jenkins, GitLab), automated software delivery, high-availability production environments.<br><br>
+        
+        <strong>Architecture & Databases</strong><br>
+        API Design, System Scalability, Relational Databases (PostgreSQL), custom web architectures.
         </p>
         </div>
         """, unsafe_allow_html=True)
@@ -618,13 +643,19 @@ def page_experience():
     with col2:
         st.markdown("""
         <div class='card'>
-        <h3 style='margin-top: 0;'>Engineering & Architecture</h3>
+        <h3 style='margin-top: 0;'>Enterprise Automation & Ecosystems</h3>
         <p>
-        • Python, TypeScript, Node.js, Angular<br>
-        • System Design & Scalability<br>
-        • API Design & Microservices<br>
-        • CI/CD (Jenkins, GitLab)<br>
-        • Cloud Infrastructure & DevOps
+        <strong>Zendesk API & Automation</strong><br>
+        Deep integration of AI workflows into enterprise-level support systems. 
+        Automated 30% of B2B support tickets (~400/month).<br><br>
+        
+        <strong>Digistore24 Platform Expertise</strong><br>
+        Technical optimization and integration for high-revenue vendor ecosystems. 
+        Managing multi-million Euro technical relationships.<br><br>
+        
+        <strong>Process Mapping & Translation</strong><br>
+        Converting manual business requirements into automated, scalable technical workflows 
+        with measurable efficiency gains.
         </p>
         </div>
         """, unsafe_allow_html=True)
