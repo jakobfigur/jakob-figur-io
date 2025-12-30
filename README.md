@@ -10,7 +10,7 @@ Dark. Modern. Lean. No bullshit, just content. Indigo accents, lots of whitespac
 
 The goal: A website that shows who I am and what I do – Technical Consulting & AI Engineering – without the typical portfolio clichés.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Streamlit** as framework (because: why not?)
 - **Python** (obviously)
@@ -18,7 +18,7 @@ The goal: A website that shows who I am and what I do – Technical Consulting &
 - **Pure CSS** for the dark theme
 - **Cursor** for rapid iteration
 
-## 🚀 Local Setup
+## Local Setup
 
 If you want to run this locally:
 
@@ -36,7 +36,7 @@ streamlit run app.py
 
 Opens automatically at `http://localhost:8501`
 
-## 📁 Structure
+## Structure
 
 ```
 jakob-figur-io/
@@ -50,7 +50,7 @@ jakob-figur-io/
 └── README.md
 ```
 
-## ✍️ Adding Blog Posts
+##  Adding Blog Posts
 
 Just drop a new `.md` file in `content/`:
 
@@ -66,7 +66,7 @@ Content...
 
 The post automatically appears in the "Insights" section.
 
-## 🎨 Customization
+## Customization
 
 ### Content
 
@@ -87,7 +87,7 @@ CSS variables at the top of `app.py`:
 
 Just change them for different colors/vibes.
 
-## 🚀 Deployment
+## Deployment
 
 Runs anywhere Python runs:
 
@@ -100,12 +100,12 @@ Runs anywhere Python runs:
 streamlit run app.py --server.runOnSave true
 ```
 
-## 📝 TODO
+## TODO
 
 - [ ] Add project screenshots
 - [ ] Make contact form functional (Formspree or similar)
 - [ ] Optional analytics
-- [ ] Maybe add profile pic to sidebar
+- [x] Maybe add profile pic to sidebar
 - [ ] Write more blog posts
 
 ## 💭 Learnings
