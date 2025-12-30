@@ -239,6 +239,123 @@ st.markdown("""
         border-top: 2px solid var(--primary-color);
     }
     
+    .contact-form-container {
+        background: var(--background-card);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    /* Style Streamlit form elements */
+    div[data-testid="stForm"] {
+        background: var(--background-card);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    /* Style input fields - unified styling with more specific selectors */
+    .stTextInput input,
+    .stTextInput > div > div > input,
+    input[type="text"],
+    input[type="email"] {
+        background-color: #0f172a !important;
+        color: #f1f5f9 !important;
+        border: 1px solid rgba(148, 163, 184, 0.2) !important;
+        border-radius: 6px !important;
+    }
+    
+    .stTextArea textarea,
+    .stTextArea > div > div > textarea,
+    textarea {
+        background-color: #0f172a !important;
+        color: #f1f5f9 !important;
+        border: 1px solid rgba(148, 163, 184, 0.2) !important;
+        border-radius: 6px !important;
+    }
+    
+    .stTextInput input:focus,
+    .stTextInput > div > div > input:focus,
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    .stTextArea textarea:focus,
+    .stTextArea > div > div > textarea:focus,
+    textarea:focus {
+        border-color: #6366f1 !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        outline: none !important;
+    }
+    
+    /* Ensure all input containers have same background */
+    .stTextInput > div,
+    .stTextArea > div,
+    .stTextInput > div > div,
+    .stTextArea > div > div {
+        background-color: transparent !important;
+    }
+    
+    /* Style primary button - override Streamlit's red button */
+    button[kind="primary"],
+    .stButton > button[kind="primary"],
+    button[data-testid="baseButton-primary"],
+    div[data-testid="stForm"] button {
+        background-color: #6366f1 !important;
+        background: #6366f1 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 6px !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    button[kind="primary"]:hover,
+    .stButton > button[kind="primary"]:hover,
+    button[data-testid="baseButton-primary"]:hover,
+    div[data-testid="stForm"] button:hover {
+        background-color: #4f46e5 !important;
+        background: #4f46e5 !important;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4) !important;
+        transform: translateY(-1px) !important;
+    }
+    
+    button[kind="primary"]:active,
+    .stButton > button[kind="primary"]:active,
+    button[data-testid="baseButton-primary"]:active,
+    div[data-testid="stForm"] button:active {
+        background-color: #4338ca !important;
+        background: #4338ca !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* Override Streamlit's default button colors */
+    button[kind="primary"]:not(:disabled),
+    .stButton > button[kind="primary"]:not(:disabled) {
+        background-color: #6366f1 !important;
+        background: #6366f1 !important;
+    }
+    
+    .contact-reasons {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+    
+    .contact-reasons li {
+        padding: 0.75rem 0;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .contact-reasons li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    
     /* Philosophical Section */
     .philosophical-section {
         background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
@@ -354,6 +471,31 @@ st.markdown("""
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    
+    /* Force override Streamlit's default button colors */
+    .stButton > button {
+        background-color: #6366f1 !important;
+    }
+    
+    /* Additional form styling to ensure consistency */
+    div[data-testid="stForm"] input,
+    div[data-testid="stForm"] textarea {
+        background-color: #0f172a !important;
+        color: #f1f5f9 !important;
+    }
+    
+    /* Style for legal links text */
+    .legal-link {
+        color: #475569 !important;
+        text-decoration: underline !important;
+        cursor: pointer !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .legal-link:hover {
+        color: #64748b !important;
+    }
+    
     
     /* Spacing utilities */
     .spacer {
@@ -964,29 +1106,63 @@ def render_footer():
     st.markdown("<div class='spacer'></div>", unsafe_allow_html=True)
     st.markdown("---")
     
-    st.markdown("""
-    <div class='contact-section'>
-        <h3 style='margin-top: 0;'>Let's Build Something Intelligent</h3>
-        <p>Interested in exploring AI transformation for your organization? 
-        Let's discuss how intelligent systems can drive measurable impact.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
+    # 2-column layout
+    col1, col2 = st.columns([1, 1])
     
     with col1:
-        name = st.text_input("Name", key="contact_name")
-        email = st.text_input("Email", key="contact_email")
+        st.markdown("## Let's Connect")
+        st.markdown("""
+        <p style='font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;'>
+        I'm always open to discussing the intersection of business logic, engineering, 
+        and the evolving landscape of AI. Whether you want to exchange ideas, talk about 
+        technical challenges, or just connect—feel free to reach out.
+        </p>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <ul class='contact-reasons'>
+            <li>Technical Architecture Exchange</li>
+            <li>AI Transformation Strategies</li>
+            <li>Professional Networking</li>
+        </ul>
+        """, unsafe_allow_html=True)
     
     with col2:
-        message = st.text_area("Message", height=100, key="contact_message")
-    
-    if st.button("Send Message", type="primary"):
-        if name and email and message:
-            st.success("Message sent. I'll get back to you soon.")
-            # TODO: Integrate with email service or form backend
-        else:
-            st.warning("Please fill out all fields.")
+        # Additional inline styles to ensure form styling works
+        st.markdown("""
+        <style>
+        /* Force form inputs to match theme */
+        div[data-testid="stForm"] input[type="text"],
+        div[data-testid="stForm"] input[type="email"],
+        div[data-testid="stForm"] textarea {
+            background-color: #0f172a !important;
+            color: #f1f5f9 !important;
+            border: 1px solid rgba(148, 163, 184, 0.2) !important;
+        }
+        
+        /* Force button to be indigo */
+        div[data-testid="stForm"] button[type="submit"],
+        div[data-testid="stForm"] button[kind="primary"] {
+            background-color: #6366f1 !important;
+            background: #6366f1 !important;
+            color: white !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        with st.form(key='contact_form'):
+            name = st.text_input("Name", key="contact_name")
+            email = st.text_input("Email", key="contact_email")
+            message = st.text_area("Message", height=120, key="contact_message")
+            
+            submitted = st.form_submit_button("Send Message", type="primary", use_container_width=True)
+            
+            if submitted:
+                if name and email and message:
+                    st.success("Message sent. I'll get back to you soon.")
+                    # TODO: Integrate with email service or form backend
+                else:
+                    st.warning("Please fill out all fields.")
     
     st.markdown("<div class='small-spacer'></div>", unsafe_allow_html=True)
     st.markdown("""
