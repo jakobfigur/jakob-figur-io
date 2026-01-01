@@ -13,7 +13,8 @@ cd ~/jakob-figur-io
 
 # Pull latest code
 echo "📥 Pulling latest code from GitHub..."
-git pull origin main
+git fetch origin
+git reset --hard origin/main
 
 # Stop and remove existing container
 echo "🛑 Stopping existing container..."
