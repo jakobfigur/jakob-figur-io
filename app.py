@@ -1,5 +1,5 @@
 """
-Jakob Figur | Technical Consultant & AI Engineer & Researcher
+Jakob Figur | Technical Consultant & AI Systems Engineer
 Personal Portfolio
 """
 
@@ -15,7 +15,7 @@ import base64
 # ============================================================================
 
 st.set_page_config(
-    page_title="Jakob Figur | Technical Consultant & AI Engineer & Researcher",
+    page_title="Jakob Figur | Technical Consultant & AI Systems Engineer",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -565,7 +565,7 @@ def render_navigation():
             """, unsafe_allow_html=True)
         
         st.markdown("### Jakob Figur")
-        st.markdown("**Technical Consultant @ Digistore24**  \n**AI Engineer & Researcher**")
+        st.markdown("**Technical Consultant @ Digistore24**  \n**AI Systems Engineer**")
         
         # Bio
         st.markdown("""
@@ -1167,7 +1167,7 @@ def render_footer():
     st.markdown("<div class='small-spacer'></div>", unsafe_allow_html=True)
     st.markdown("""
     <div style='text-align: center; color: #64748b; font-size: 0.9rem;'>
-        <p>© 2025 Jakob Figur | Technical Consultant & AI Engineer & Researcher</p>
+        <p>© 2025 Jakob Figur | Technical Consultant & AI Systems Engineer</p>
         <div class='footer-social-icons'>
             <a href='https://www.linkedin.com/in/jakob-figur-2b9501367/' target='_blank' class='social-icon' title='LinkedIn'>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
