@@ -579,8 +579,8 @@ def render_navigation():
         
         selected = option_menu(
             menu_title=None,
-            options=["Identity", "Experience", "Projects", "Insights"],
-            icons=["house", "briefcase", "lightbulb", "book"],
+            options=["Identity", "Experience", "Projects", "Blog", "Papers"],
+            icons=["house", "briefcase", "lightbulb", "pencil", "file-text"],
             menu_icon="cast",
             default_index=0,
             styles={
@@ -876,143 +876,130 @@ def page_experience():
 # PAGE: PROJECTS
 # ============================================================================
 
+def get_projects_data():
+    """Return hardcoded projects data"""
+    return [
+        {
+            'id': 'example-project',
+            'title': 'Example AI Platform',
+            'subtitle': 'Advanced Machine Learning Infrastructure',
+            'tags': ['AI/ML', 'Python', 'Cloud'],
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            'challenge': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'solution': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+            'tech_stack': [
+                'Python & FastAPI',
+                'TensorFlow / PyTorch',
+                'Docker & Kubernetes',
+                'PostgreSQL & Redis',
+                'AWS / Azure Cloud'
+            ],
+            'impact': [
+                ('<strong>85%</strong>', 'efficiency increase'),
+                ('<strong>$500K+</strong>', 'annual cost savings'),
+                ('<strong>10,000+</strong>', 'daily active users'),
+                ('<strong>99.9%</strong>', 'system uptime')
+            ]
+        }
+    ]
+
+
 def page_projects():
     """Featured projects and case studies"""
-    
-    st.markdown("# Featured Work")
+
+    st.markdown("# Projects")
     st.markdown("<div class='accent-line'></div>", unsafe_allow_html=True)
-    
+
     st.markdown("""
     <p style='font-size: 1.1rem; margin-bottom: 3rem;'>
     Selected projects demonstrating the intersection of strategic thinking and technical execution.
     </p>
     """, unsafe_allow_html=True)
-    
-    # Featured Project: DigiDoc AI
-    st.markdown("""
-    <div class='project-card'>
-        <span class='project-tag'>Featured</span>
-        <span class='project-tag'>Agentic AI</span>
-        <span class='project-tag'>Process Automation</span>
-        
-        <h2 style='margin-top: 1.5rem; color: #f1f5f9;'>DigiDoc AI</h2>
-        <h3 style='color: #94a3b8; font-weight: 400; margin-top: 0.5rem;'>
-        Intelligent Document Processing & Workflow Automation
-        </h3>
-        
-        <p style='font-size: 1.1rem; margin-top: 1.5rem; line-height: 1.8;'>
-        An agentic AI system transforming unstructured documents into actionable insights 
-        and automated workflows. Designed for enterprises handling high-volume document processing 
-        with complex validation requirements.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Project Details
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        <div class='card'>
-        <h3 style='margin-top: 0;'>The Challenge</h3>
-        <p>
-        Organizations processing thousands of documents monthly—invoices, contracts, reports—
-        were losing countless hours to manual extraction, validation, and routing. Traditional OCR 
-        couldn't handle document variability and contextual complexity.
-        </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <div class='card'>
-        <h3 style='margin-top: 0;'>The Solution</h3>
-        <p>
-        An agentic AI system powered by LLMs that understands documents, not just reads them. 
-        Multi-agent architecture with specialized agents for extraction, validation, classification, 
-        and workflow orchestration. Self-improving through continuous feedback loops.
-        </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div class='card'>
-        <h3 style='margin-top: 0;'>Technical Architecture</h3>
-        <p>
-        • Vision models for layout understanding<br>
-        • LLM-based extraction with structured outputs<br>
-        • RAG system for domain-specific context<br>
-        • Agent orchestration with LangGraph<br>
-        • Vector DB for semantic search<br>
-        • FastAPI backend with async processing
-        </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <div class='card'>
-        <h3 style='margin-top: 0;'>Impact</h3>
-        <p>
-        <strong>85% reduction</strong> in manual processing time<br>
-        <strong>95%+ accuracy</strong> on document classification<br>
-        <strong>$200K+ annual savings</strong> per deployment<br>
-        Processing <strong>10,000+ documents/month</strong> autonomously
-        </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    # AI-First Company Paper
-    st.markdown("<div class='spacer'></div>", unsafe_allow_html=True)
-    
-    st.markdown("""
-    <div class='project-card'>
-        <span class='project-tag'>Strategic Framework</span>
-        <span class='project-tag'>Internal Research</span>
-        
-        <h2 style='margin-top: 1.5rem; color: #f1f5f9;'>AI-First Company Framework</h2>
-        <h3 style='color: #94a3b8; font-weight: 400; margin-top: 0.5rem;'>
-        Organizational Transformation Methodology
-        </h3>
-        
-        <p style='font-size: 1.1rem; margin-top: 1.5rem; line-height: 1.8;'>
-        Internal strategic paper defining the transition from AI-adjacent to AI-native organizations. 
-        Frameworks for cultural transformation, technical infrastructure, and operational integration 
-        of autonomous AI systems at scale.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Additional Projects
-    st.markdown("<div class='spacer'></div>", unsafe_allow_html=True)
-    st.markdown("## Additional Work")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        <div class='card'>
-        <h3 style='margin-top: 0;'>B2B Support Automation</h3>
-        <span class='project-tag'>LangChain</span>
-        <span class='project-tag'>RAG</span>
-        <p style='margin-top: 1rem;'>
-        Autonomous support agent handling 30% of incoming B2B tickets (~400/month) with intelligent 
-        routing and context-aware responses. Integrated with existing ticketing systems.
-        </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div class='card'>
-        <h3 style='margin-top: 0;'>Custom DevOps Pipelines</h3>
-        <span class='project-tag'>Jenkins</span>
-        <span class='project-tag'>GitLab CI</span>
-        <p style='margin-top: 1rem;'>
-        Engineered high-availability CI/CD pipelines reducing deployment time by 60% while improving 
-        reliability and rollback capabilities for mission-critical production environments.
-        </p>
-        </div>
-        """, unsafe_allow_html=True)
+
+    # Get projects data
+    projects = get_projects_data()
+
+    # Project selection state
+    if 'selected_project' not in st.session_state:
+        st.session_state.selected_project = None
+
+    if st.session_state.selected_project:
+        # Show selected project details
+        project = next((p for p in projects if p['id'] == st.session_state.selected_project), None)
+
+        if project:
+            if st.button("← Back to all projects"):
+                st.session_state.selected_project = None
+                st.rerun()
+
+            st.markdown("<div class='small-spacer'></div>", unsafe_allow_html=True)
+
+            # Project header
+            tags_html = ''.join([f"<span class='project-tag'>{tag}</span>" for tag in project['tags']])
+            st.markdown(f"""
+            <div class='project-card'>
+                {tags_html}
+                <h2 style='margin-top: 1.5rem; color: #f1f5f9;'>{project['title']}</h2>
+                <h3 style='color: #94a3b8; font-weight: 400; margin-top: 0.5rem;'>
+                {project['subtitle']}
+                </h3>
+                <p style='font-size: 1.1rem; margin-top: 1.5rem; line-height: 1.8;'>
+                {project['description']}
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+
+            # Project details
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.markdown(f"""
+                <div class='card'>
+                <h3 style='margin-top: 0;'>The Challenge</h3>
+                <p>{project['challenge']}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+                st.markdown(f"""
+                <div class='card'>
+                <h3 style='margin-top: 0;'>The Solution</h3>
+                <p>{project['solution']}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+            with col2:
+                tech_list = '<br>'.join([f'• {tech}' for tech in project['tech_stack']])
+                st.markdown(f"""
+                <div class='card'>
+                <h3 style='margin-top: 0;'>Technical Stack</h3>
+                <p>{tech_list}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+                impact_html = '<br>'.join([f'{metric} {desc}' for metric, desc in project['impact']])
+                st.markdown(f"""
+                <div class='card'>
+                <h3 style='margin-top: 0;'>Impact</h3>
+                <p>{impact_html}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+    else:
+        # Show project cards overview
+        for project in projects:
+            tags_html = ''.join([f"<span class='project-tag'>{tag}</span>" for tag in project['tags']])
+            st.markdown(f"""
+            <div class='blog-card'>
+                {tags_html}
+                <h3 style='margin: 0.75rem 0;'>{project['title']}</h3>
+                <p style='color: #94a3b8;'>{project['subtitle']}</p>
+                <p style='margin-top: 1rem;'>{project['description']}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+            if st.button(f"View Project: {project['title']}", key=f"project_{project['id']}"):
+                st.session_state.selected_project = project['id']
+                st.rerun()
 
 
 # ============================================================================
@@ -1045,16 +1032,15 @@ def load_blog_posts():
     return posts
 
 
-def page_insights():
-    """Blog and thought leadership"""
-    
-    st.markdown("# Insights & Perspectives")
+def page_blog():
+    """Blog articles and insights"""
+
+    st.markdown("# Blog")
     st.markdown("<div class='accent-line'></div>", unsafe_allow_html=True)
-    
+
     st.markdown("""
     <p style='font-size: 1.1rem; margin-bottom: 3rem;'>
-    Thoughts on AI systems engineering, strategic architecture, and the intersection of 
-    technology with human potential.
+    Thoughts on AI, engineering, and building the future.
     </p>
     """, unsafe_allow_html=True)
     
@@ -1093,6 +1079,86 @@ def page_insights():
             
             if st.button(f"Read: {post['title']}", key=post['filename']):
                 st.session_state.selected_post = post['filename']
+                st.rerun()
+
+
+# ============================================================================
+# PAGE: PAPERS (CONCEPT PAPERS)
+# ============================================================================
+
+def load_papers():
+    """Load concept papers from papers directory"""
+    papers_dir = Path("papers")
+    papers = []
+
+    if papers_dir.exists():
+        for md_file in sorted(papers_dir.glob("*.md"), reverse=True):
+            with open(md_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+                # Extract title (first # heading)
+                title = "Untitled"
+                for line in content.split('\n'):
+                    if line.startswith('# '):
+                        title = line.replace('# ', '').strip()
+                        break
+
+                papers.append({
+                    'title': title,
+                    'filename': md_file.stem,
+                    'content': content,
+                    'file': md_file.name
+                })
+
+    return papers
+
+
+def page_papers():
+    """Research papers and concept documents"""
+
+    st.markdown("# Research & Concept Papers")
+    st.markdown("<div class='accent-line'></div>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <p style='font-size: 1.1rem; margin-bottom: 3rem;'>
+    Strategic frameworks, research, and deep-dive analyses on AI transformation and technical architecture.
+    </p>
+    """, unsafe_allow_html=True)
+
+    # Load papers
+    papers = load_papers()
+
+    if not papers:
+        st.info("Papers coming soon. Check back for in-depth research and strategic frameworks.")
+        return
+
+    # Paper selection
+    if 'selected_paper' not in st.session_state:
+        st.session_state.selected_paper = None
+
+    if st.session_state.selected_paper:
+        # Show selected paper
+        paper = next((p for p in papers if p['filename'] == st.session_state.selected_paper), None)
+
+        if paper:
+            if st.button("← Back to all papers"):
+                st.session_state.selected_paper = None
+                st.rerun()
+
+            st.markdown(f"<div class='small-spacer'></div>", unsafe_allow_html=True)
+            st.markdown(paper['content'], unsafe_allow_html=True)
+    else:
+        # Show paper cards
+        for paper in papers:
+            st.markdown(f"""
+            <div class='blog-card'>
+                <div class='blog-date'>Research Paper</div>
+                <h3 style='margin: 0.5rem 0;'>{paper['title']}</h3>
+                <p>Click to read the full paper...</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+            if st.button(f"Read: {paper['title']}", key=f"paper_{paper['filename']}"):
+                st.session_state.selected_paper = paper['filename']
                 st.rerun()
 
 
@@ -1206,9 +1272,11 @@ def main():
         page_experience()
     elif selected_page == "Projects":
         page_projects()
-    elif selected_page == "Insights":
-        page_insights()
-    
+    elif selected_page == "Blog":
+        page_blog()
+    elif selected_page == "Papers":
+        page_papers()
+
     # Render footer on all pages
     render_footer()
 
