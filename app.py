@@ -989,18 +989,30 @@ def page_projects():
         for project in projects:
             tags_html = ''.join([f"<span class='project-tag'>{tag}</span>" for tag in project['tags']])
 
-            # Create clickable container
-            with st.container():
+            # Use container for each card
+            container = st.container()
+            with container:
+                # Clickable card - button first (invisible)
+                clicked = st.button(
+                    "​",  # Invisible character
+                    key=f"project_{project['id']}",
+                    use_container_width=True,
+                    help=project['title']
+                )
+
+                # Card content positioned above the button
                 st.markdown(f"""
-                <div class='blog-card' style='cursor: pointer; margin-bottom: 0.5rem;'>
-                    {tags_html}
-                    <h3 style='margin: 0.75rem 0;'>{project['title']}</h3>
-                    <p style='color: #94a3b8;'>{project['subtitle']}</p>
-                    <p style='margin-top: 1rem;'>{project['description']}</p>
+                <div style='margin-top: -3.2rem; pointer-events: none;'>
+                    <div class='blog-card'>
+                        {tags_html}
+                        <h3 style='margin: 0.75rem 0;'>{project['title']}</h3>
+                        <p style='color: #94a3b8;'>{project['subtitle']}</p>
+                        <p style='margin-top: 1rem;'>{project['description']}</p>
+                    </div>
                 </div>
                 """, unsafe_allow_html=True)
 
-                if st.button("📖 View Project", key=f"project_{project['id']}", use_container_width=True):
+                if clicked:
                     st.session_state.selected_project = project['id']
                     st.rerun()
 
@@ -1072,17 +1084,28 @@ def page_blog():
     else:
         # Show post list
         for post in posts:
-            # Create clickable container
-            with st.container():
+            container = st.container()
+            with container:
+                # Invisible button
+                clicked = st.button(
+                    "​",
+                    key=post['filename'],
+                    use_container_width=True,
+                    help=post['title']
+                )
+
+                # Card content
                 st.markdown(f"""
-                <div class='blog-card' style='cursor: pointer; margin-bottom: 0.5rem;'>
-                    <div class='blog-date'>Recent</div>
-                    <h3 style='margin: 0.5rem 0;'>{post['title']}</h3>
-                    <p>Click to read more...</p>
+                <div style='margin-top: -3.2rem; pointer-events: none;'>
+                    <div class='blog-card'>
+                        <div class='blog-date'>Recent</div>
+                        <h3 style='margin: 0.5rem 0;'>{post['title']}</h3>
+                        <p>Click to read more...</p>
+                    </div>
                 </div>
                 """, unsafe_allow_html=True)
 
-                if st.button("📖 Read Article", key=post['filename'], use_container_width=True):
+                if clicked:
                     st.session_state.selected_post = post['filename']
                     st.rerun()
 
@@ -1154,17 +1177,28 @@ def page_papers():
     else:
         # Show paper cards
         for paper in papers:
-            # Create clickable container
-            with st.container():
+            container = st.container()
+            with container:
+                # Invisible button
+                clicked = st.button(
+                    "​",
+                    key=f"paper_{paper['filename']}",
+                    use_container_width=True,
+                    help=paper['title']
+                )
+
+                # Card content
                 st.markdown(f"""
-                <div class='blog-card' style='cursor: pointer; margin-bottom: 0.5rem;'>
-                    <div class='blog-date'>Research Paper</div>
-                    <h3 style='margin: 0.5rem 0;'>{paper['title']}</h3>
-                    <p>Click to read the full paper...</p>
+                <div style='margin-top: -3.2rem; pointer-events: none;'>
+                    <div class='blog-card'>
+                        <div class='blog-date'>Research Paper</div>
+                        <h3 style='margin: 0.5rem 0;'>{paper['title']}</h3>
+                        <p>Click to read the full paper...</p>
+                    </div>
                 </div>
                 """, unsafe_allow_html=True)
 
-                if st.button("📖 Read Paper", key=f"paper_{paper['filename']}", use_container_width=True):
+                if clicked:
                     st.session_state.selected_paper = paper['filename']
                     st.rerun()
 
