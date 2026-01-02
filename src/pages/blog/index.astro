@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const blogPosts = await getCollection('blog');
+// Sort by date if available, otherwise by title
+const sortedPosts = blogPosts.sort((a, b) => {
+  if (a.data.date && b.data.date) {
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  }
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+
+<BaseLayout
+  title="Blog | Jakob Figur"
+  description="Insights on AI engineering, system architecture, and technical leadership."
+>
+  <div class="container">
+    <h1>Blog</h1>
+    <p style="font-size: 1.1rem; max-width: 800px; margin-bottom: 3rem;">
+      Writing about AI systems, technical architecture, and lessons learned from building
+      production systems. Topics range from deep technical dives to strategic considerations
+      for implementing AI in organizations.
+    </p>
+
+    <div style="margin-top: 3rem;">
+      {sortedPosts.map((post) => (
+        <a href={`/blog/${post.slug}`} class="blog-card" style="display: block; text-decoration: none;">
+          {post.data.date && (
+            <div class="blog-date">{post.data.date}</div>
+          )}
+          <h3 style="color: var(--text-primary); margin-top: 0.5rem; font-size: 1.5rem; margin-bottom: 0.75rem;">
+            {post.data.title}
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            Click to read more...
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

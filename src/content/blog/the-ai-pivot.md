@@ -1,3 +1,8 @@
+---
+title: "The AI Pivot: From Software Engineering to Agentic Intelligence"
+date: "2024-12-15"
+---
+
 # The AI Pivot: From Software Engineering to Agentic Intelligence
 
 ## The Fundamental Shift

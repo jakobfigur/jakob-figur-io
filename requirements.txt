@@ -1,5 +1,0 @@
-streamlit==1.29.0
-streamlit-option-menu==0.3.12
-Pillow==10.1.0
-python-dotenv==1.0.0
-

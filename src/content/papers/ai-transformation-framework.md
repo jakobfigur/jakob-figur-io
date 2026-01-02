@@ -1,3 +1,8 @@
+---
+title: "AI Transformation Framework"
+date: "2024-11-30"
+---
+
 # AI Transformation Framework
 
 ## Executive Summary

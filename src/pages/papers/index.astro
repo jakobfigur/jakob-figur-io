@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const papers = await getCollection('papers');
+// Sort by date if available, otherwise by title
+const sortedPapers = papers.sort((a, b) => {
+  if (a.data.date && b.data.date) {
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  }
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+
+<BaseLayout
+  title="Papers | Jakob Figur"
+  description="Research papers and concept explorations in AI systems and technical architecture."
+>
+  <div class="container">
+    <h1>Research Papers</h1>
+    <p style="font-size: 1.1rem; max-width: 800px; margin-bottom: 3rem;">
+      Concept papers exploring emerging ideas in AI systems, architectural patterns, and
+      technical leadership. These papers represent deeper dives into specific topics,
+      combining theoretical frameworks with practical insights from production systems.
+    </p>
+
+    <div style="margin-top: 3rem;">
+      {sortedPapers.map((paper) => (
+        <a href={`/papers/${paper.slug}`} class="blog-card" style="display: block; text-decoration: none;">
+          {paper.data.date && (
+            <div class="blog-date">{paper.data.date}</div>
+          )}
+          <h3 style="color: var(--text-primary); margin-top: 0.5rem; font-size: 1.5rem; margin-bottom: 0.75rem;">
+            {paper.data.title}
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            Click to read the full paper...
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

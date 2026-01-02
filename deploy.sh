@@ -21,7 +21,7 @@ echo "🛑 Stopping existing container..."
 docker stop $CONTAINER_NAME 2>/dev/null || true
 docker rm $CONTAINER_NAME 2>/dev/null || true
 
-# Build new image
+# Build new image (Astro static site)
 echo "🔨 Building Docker image..."
 docker build -t $IMAGE_NAME .
 

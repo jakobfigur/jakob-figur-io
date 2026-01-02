@@ -1,8 +1,24 @@
 # Personal Website · Jakob Figur
 
-My personal brand website, vibe-coded with Python, Streamlit & Cursor.
+My personal brand website - a journey from Streamlit prototype to production-ready Astro site.
 
-An experiment: Can you build a clean, high-end website with Streamlit? Turns out: Yes.
+## 🚀 The Evolution
+
+**Phase 1: Streamlit Experiment**
+Started with a bold question: Can you build a clean, high-end website with Streamlit? Turns out: Yes, you can. Built the entire site in Python with Streamlit for rapid iteration and testing. Perfect for prototyping and getting content structure right.
+
+**Phase 2: Production Reality**
+When it came time to deploy for real, we hit Streamlit's limits. The biggest issue: clickable cards. We wanted native, intuitive UX where entire cards are clickable - something trivial in HTML but fundamentally limited in Streamlit (which requires `st.button()` for interactions).
+
+**Phase 3: Migration to Astro**
+Decided to go "full retarded" and migrate to Astro for production. Why Astro?
+- Native HTML/CSS control = clickable cards without hacks
+- Static site generation = blazing fast performance
+- Better SEO out of the box
+- Content Collections for type-safe markdown management
+- Still keeps the same dark, modern vibe
+
+The Streamlit prototype helped us nail the content and design. Astro gives us the UX polish for production.
 
 ## 💭 The Vibe
 
@@ -12,110 +28,179 @@ The goal: A website that shows who I am and what I do – Technical Consulting &
 
 ## Tech Stack
 
-- **Streamlit** as framework (because: why not?)
-- **Python** (obviously)
-- **Markdown** for blog posts
-- **Pure CSS** for the dark theme
-- **Cursor** for rapid iteration
+**Current (Production):**
+- **Astro** - Static site framework
+- **TypeScript** - Type safety
+- **Content Collections** - Type-safe markdown CMS
+- **Nginx** - Static file serving
+- **Docker** - Containerized deployment
 
-## Local Setup
+**Previous (Prototype):**
+- ~~Streamlit~~ - Used for rapid prototyping
+- ~~Python~~ - Replaced with TypeScript/Astro
 
-If you want to run this locally:
+## Local Development
 
 ```bash
-# Virtual Environment
-python -m venv venv
-source venv/bin/activate
+# Install dependencies
+npm install
 
-# Dependencies
-pip install -r requirements.txt
+# Run dev server
+npm run dev
 
-# Run
-streamlit run app.py
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-Opens automatically at `http://localhost:8501`
+Opens at `http://localhost:4321` (dev) or `http://localhost:8501` (production container)
+
+## Docker Deployment
+
+```bash
+# Build the image
+docker build -t jakob-figur-io .
+
+# Run the container
+docker run -d --name jakob-website --restart unless-stopped -p 8501:8501 jakob-figur-io
+```
+
+The Dockerfile uses multi-stage build:
+1. **Build stage**: Node.js builds the Astro static site
+2. **Production stage**: Nginx serves the static files
 
 ## Structure
 
 ```
 jakob-figur-io/
-├── app.py                 # The heart of it all
-├── requirements.txt       # Dependencies
-├── content/              # Blog posts as Markdown
-│   └── the-ai-pivot.md  
-├── assets/               # Images, icons etc.
-│   ├── images/
-│   └── icons/
-└── README.md
+├── src/
+│   ├── pages/                # Page routes
+│   │   ├── index.astro       # Identity page
+│   │   ├── experience.astro  # Work history
+│   │   ├── projects.astro    # Featured projects
+│   │   ├── blog/             # Blog posts
+│   │   │   ├── index.astro   # Blog listing
+│   │   │   └── [slug].astro  # Individual posts
+│   │   └── papers/           # Research papers
+│   │       ├── index.astro   # Papers listing
+│   │       └── [slug].astro  # Individual papers
+│   ├── layouts/
+│   │   └── BaseLayout.astro  # Main layout with nav/footer
+│   ├── content/              # Content collections
+│   │   ├── blog/             # Blog posts (markdown)
+│   │   ├── papers/           # Research papers (markdown)
+│   │   └── config.ts         # Content schema
+│   └── styles/
+│       └── global.css        # Dark theme styles
+├── astro.config.mjs          # Astro configuration
+├── tsconfig.json             # TypeScript config
+├── Dockerfile                # Multi-stage build
+├── nginx.conf                # Nginx configuration
+└── deploy.sh                 # Deployment script
 ```
 
-##  Adding Blog Posts
+## Adding Content
 
-Just drop a new `.md` file in `content/`:
+### Blog Posts
+
+Create a new `.md` file in `src/content/blog/`:
 
 ```markdown
-# Post Title
+---
+title: "Your Post Title"
+date: "2025-01-02"
+---
 
-Intro...
+Your content here...
 
-## Section
+## Sections
+
+More content...
+```
+
+The post automatically appears on `/blog` with a clickable card.
+
+### Research Papers
+
+Same as blog posts, but in `src/content/papers/`:
+
+```markdown
+---
+title: "Your Paper Title"
+date: "2025-01-02"
+---
+
+Abstract...
+
+## Introduction
 
 Content...
 ```
 
-The post automatically appears in the "Insights" section.
-
 ## Customization
+
+### Design Tokens
+
+CSS variables in `src/styles/global.css`:
+
+```css
+:root {
+  --primary-color: #6366f1;        /* Indigo accent */
+  --secondary-color: #475569;      /* Slate grey */
+  --background-dark: #0f172a;      /* Main background */
+  --background-card: #1e293b;      /* Card background */
+  --text-primary: #f1f5f9;         /* Primary text */
+  --text-secondary: #94a3b8;       /* Secondary text */
+}
+```
+
+### Navigation
+
+Update `src/layouts/BaseLayout.astro` to modify navigation links or footer.
 
 ### Content
 
-Everything in `app.py`:
-- **Line 18**: Page title & favicon
-- **Sidebar** (`render_navigation`): Contact info & links
-- **Experience Timeline** (`page_expertise`): My career stations
-- **Projects** (`page_solutions`): Case studies
+- **Identity page**: `src/pages/index.astro` - Hero section and core competencies
+- **Experience**: `src/pages/experience.astro` - Work timeline and skills
+- **Projects**: `src/pages/projects.astro` - Featured project cards
 
-### Design
+## CI/CD Pipeline
 
-CSS variables at the top of `app.py`:
+Automatic deployment via GitHub Actions:
 
-- `--primary-color`: Indigo (#6366f1)
-- `--secondary-color`: Slate Grey (#475569)
-- `--background-dark`: Main BG
-- `--text-primary`: Text color
+1. Push to `main` branch
+2. GitHub Actions triggers
+3. SSH into Hetzner server
+4. Pulls latest code
+5. Rebuilds Docker image
+6. Restarts container
+7. Site is live
 
-Just change them for different colors/vibes.
-
-## Deployment
-
-Runs anywhere Python runs:
-
-- **Streamlit Cloud** – Free tier, 2 min setup
-- **Docker** – Container and you're good
-- **Any VPS** – Python + `streamlit run app.py`
-
-```bash
-# Develop with auto-reload
-streamlit run app.py --server.runOnSave true
-```
-
-## TODO
-
-- [ ] Add project screenshots
-- [ ] Make contact form functional (Formspree or similar)
-- [ ] Optional analytics
-- [x] Maybe add profile pic to sidebar
-- [ ] Write more blog posts
+Configuration: `.github/workflows/deploy.yml`
 
 ## 💭 Learnings
 
-- Streamlit is surprisingly good for this
+**From the Streamlit Phase:**
+- Streamlit is surprisingly good for rapid prototyping
+- Python is great for quick iteration and testing
 - Custom CSS > Component libraries for clean design
-- Markdown-based CMS = simplicity wins
-- Cursor makes iteration incredibly fast
+- Got the content and structure right before committing to tech
+
+**From the Astro Migration:**
+- Framework choice matters for UX details
+- Static sites are perfect for portfolios (speed + SEO)
+- Content Collections provide great DX for markdown content
+- Multi-stage Docker builds keep production images lean
+- Sometimes you need to migrate to get the polish right
+
+**Overall:**
+- Prototype fast, migrate when needed
+- UX polish matters for production
+- Cursor makes both prototyping AND migration incredibly fast
 
 ---
 
-**Vibe-coded with ⚡ and Cursor**  
-Jakob Figur · Technical Consultant & AI Engineer
+**Built with ⚡ Astro and Cursor**
+Jakob Figur · Technical Consultant & AI Engineer & Researcher

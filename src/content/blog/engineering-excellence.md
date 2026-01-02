@@ -1,3 +1,8 @@
+---
+title: "Engineering Excellence in Modern Systems"
+date: "2024-12-25"
+---
+
 # Engineering Excellence in Modern Systems
 
 ## Building for Scale

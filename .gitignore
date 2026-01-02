@@ -1,16 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-ENV/
-.venv
+# Dependencies
+node_modules/
 
-# Streamlit
-.streamlit/
+# Build output
+dist/
+.astro/
 
 # Environment
 .env
@@ -29,5 +22,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-# CI/CD test
