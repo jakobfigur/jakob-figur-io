@@ -988,18 +988,21 @@ def page_projects():
         # Show project cards overview
         for project in projects:
             tags_html = ''.join([f"<span class='project-tag'>{tag}</span>" for tag in project['tags']])
-            st.markdown(f"""
-            <div class='blog-card'>
-                {tags_html}
-                <h3 style='margin: 0.75rem 0;'>{project['title']}</h3>
-                <p style='color: #94a3b8;'>{project['subtitle']}</p>
-                <p style='margin-top: 1rem;'>{project['description']}</p>
-            </div>
-            """, unsafe_allow_html=True)
 
-            if st.button(f"View Project: {project['title']}", key=f"project_{project['id']}"):
-                st.session_state.selected_project = project['id']
-                st.rerun()
+            # Create clickable container
+            with st.container():
+                st.markdown(f"""
+                <div class='blog-card' style='cursor: pointer; margin-bottom: 0.5rem;'>
+                    {tags_html}
+                    <h3 style='margin: 0.75rem 0;'>{project['title']}</h3>
+                    <p style='color: #94a3b8;'>{project['subtitle']}</p>
+                    <p style='margin-top: 1rem;'>{project['description']}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+                if st.button("📖 View Project", key=f"project_{project['id']}", use_container_width=True):
+                    st.session_state.selected_project = project['id']
+                    st.rerun()
 
 
 # ============================================================================
@@ -1069,17 +1072,19 @@ def page_blog():
     else:
         # Show post list
         for post in posts:
-            st.markdown(f"""
-            <div class='blog-card'>
-                <div class='blog-date'>Recent</div>
-                <h3 style='margin: 0.5rem 0;'>{post['title']}</h3>
-                <p>Click to read more...</p>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            if st.button(f"Read: {post['title']}", key=post['filename']):
-                st.session_state.selected_post = post['filename']
-                st.rerun()
+            # Create clickable container
+            with st.container():
+                st.markdown(f"""
+                <div class='blog-card' style='cursor: pointer; margin-bottom: 0.5rem;'>
+                    <div class='blog-date'>Recent</div>
+                    <h3 style='margin: 0.5rem 0;'>{post['title']}</h3>
+                    <p>Click to read more...</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+                if st.button("📖 Read Article", key=post['filename'], use_container_width=True):
+                    st.session_state.selected_post = post['filename']
+                    st.rerun()
 
 
 # ============================================================================
@@ -1149,17 +1154,19 @@ def page_papers():
     else:
         # Show paper cards
         for paper in papers:
-            st.markdown(f"""
-            <div class='blog-card'>
-                <div class='blog-date'>Research Paper</div>
-                <h3 style='margin: 0.5rem 0;'>{paper['title']}</h3>
-                <p>Click to read the full paper...</p>
-            </div>
-            """, unsafe_allow_html=True)
+            # Create clickable container
+            with st.container():
+                st.markdown(f"""
+                <div class='blog-card' style='cursor: pointer; margin-bottom: 0.5rem;'>
+                    <div class='blog-date'>Research Paper</div>
+                    <h3 style='margin: 0.5rem 0;'>{paper['title']}</h3>
+                    <p>Click to read the full paper...</p>
+                </div>
+                """, unsafe_allow_html=True)
 
-            if st.button(f"Read: {paper['title']}", key=f"paper_{paper['filename']}"):
-                st.session_state.selected_paper = paper['filename']
-                st.rerun()
+                if st.button("📖 Read Paper", key=f"paper_{paper['filename']}", use_container_width=True):
+                    st.session_state.selected_paper = paper['filename']
+                    st.rerun()
 
 
 # ============================================================================
