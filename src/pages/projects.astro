@@ -3,22 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const projects = [
   {
-    title: 'AI-Powered Content Generation Platform',
-    description: 'Built an end-to-end content generation system using GPT-4 and custom fine-tuned models. Implemented intelligent prompt engineering, content quality validation, and automated workflow orchestration. System processes 10,000+ content pieces daily with 95% approval rate.',
-    technologies: ['Python', 'GPT-4', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker'],
-    link: '#'
-  },
-  {
-    title: 'Real-time Recommendation Engine',
-    description: 'Designed and deployed a low-latency recommendation system serving 1M+ daily users. Implemented collaborative filtering with deep learning embeddings, A/B testing framework, and real-time model updates. Achieved 40% increase in user engagement metrics.',
-    technologies: ['PyTorch', 'FastAPI', 'Redis', 'Kubernetes', 'MLflow'],
-    link: '#'
-  },
-  {
-    title: 'Document Intelligence Pipeline',
-    description: 'Created an NLP pipeline for automated document processing and information extraction. Combines OCR, named entity recognition, and custom classification models. Processes 100k+ documents monthly with 98% accuracy, reducing manual review time by 80%.',
-    technologies: ['Transformers', 'spaCy', 'Tesseract', 'PostgreSQL', 'Apache Airflow'],
-    link: '#'
+    title: 'Example AI Platform',
+    subtitle: 'Advanced Machine Learning Infrastructure',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    technologies: ['AI/ML', 'Python', 'Cloud']
   }
 ];
 ---
@@ -37,19 +25,23 @@ const projects = [
 
     <div style="margin-top: 3rem;">
       {projects.map((project) => (
-        <a href={project.link} class="project-card" style="display: block; text-decoration: none;">
-          <h3 style="color: var(--text-primary); margin-top: 0; font-size: 1.75rem; margin-bottom: 1rem;">
-            {project.title}
-          </h3>
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">
-            {project.description}
-          </p>
+        <div class="project-card">
           <div>
             {project.technologies.map((tech) => (
               <span class="project-tag">{tech}</span>
             ))}
           </div>
-        </a>
+          <h2 style="margin-top: 1.5rem; color: #f1f5f9;">{project.title}</h2>
+          <h3 style="color: #94a3b8; font-weight: 400; margin-top: 0.5rem;">
+            {project.subtitle}
+          </h3>
+          <p style="font-size: 1.1rem; margin-top: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+            {project.description}
+          </p>
+          <p style="font-size: 0.9rem; margin-top: 1.5rem; color: var(--text-secondary); font-style: italic;">
+            (Detailed project showcases coming soon)
+          </p>
+        </div>
       ))}
     </div>
 

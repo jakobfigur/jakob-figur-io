@@ -8,17 +8,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <div class="container">
     <!-- Hero Section -->
-    <div style="max-width: 800px; margin-bottom: 4rem;">
-      <h1 class="hero-headline" style="font-size: 3.5rem; margin-bottom: 1rem;">Jakob Figur</h1>
-      <p class="hero-subheadline" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">
-        Technical Consultant @ Digistore24<br>AI Engineer & Researcher
-      </p>
-      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
-        Bridging the gap between cutting-edge AI research and real-world business applications.
-        I architect intelligent systems that transform how organizations operate, combining deep
-        technical expertise with strategic business insight to deliver measurable impact.
-      </p>
+    <div style="max-width: 900px; margin-bottom: 4rem; display: flex; gap: 3rem; align-items: center;">
+      <div style="flex: 1;">
+        <h1 class="hero-headline" style="font-size: 3rem; margin-bottom: 1rem;">
+          Synthesizing High-Scale Business Logic with Agentic Intelligence.
+        </h1>
+        <p class="hero-subheadline" style="font-size: 1.15rem; margin-bottom: 0;">
+          Building the symbiosis between human intuition and machine efficiency.
+          I help organizations navigate the AI revolution through robust engineering and strategic foresight.
+        </p>
+      </div>
+      <div style="flex-shrink: 0;">
+        <img src="/assets/images/profile.jpeg" alt="Jakob Figur" style="width: 200px; height: 200px; border-radius: 12px; object-fit: cover; border: 2px solid var(--primary-color);" />
+      </div>
     </div>
+
+    <div class="accent-line"></div>
 
     <!-- Core Competencies -->
     <h2 style="text-align: center; margin-bottom: 3rem;">Core Competencies</h2>
@@ -26,47 +31,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="grid-2">
       <div class="pillar-card">
         <div class="pillar-number">Pillar 01</div>
-        <h3 class="pillar-title">AI Systems Architecture</h3>
+        <h3 class="pillar-title">Strategic Systems Consulting</h3>
         <p class="pillar-content">
-          Designing and implementing production-grade AI systems that scale. From proof-of-concept
-          to enterprise deployment, I build robust architectures that handle real-world complexity
-          while maintaining performance and reliability.
+          Managing high-revenue vendors by translating complex business requirements into technical reality.
+          Specialized in scalability and multi-million Euro ecosystems where precision and reliability are non-negotiable.
         </p>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-number">Pillar 02</div>
-        <h3 class="pillar-title">Strategic Technical Leadership</h3>
+        <h3 class="pillar-title">Proven AI Impact</h3>
         <p class="pillar-content">
-          Translating business objectives into technical roadmaps. I bridge the communication gap
-          between C-suite stakeholders and engineering teams, ensuring AI initiatives deliver
-          tangible ROI while building sustainable competitive advantages.
+          Tangible results: <strong>Automated 30% of B2B support tickets</strong> (~400/month) and
+          <strong>reduced manual onboarding workload by 80%</strong> through targeted AI integration
+          and custom automation frameworks.
         </p>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-number">Pillar 03</div>
-        <h3 class="pillar-title">Research & Innovation</h3>
+        <h3 class="pillar-title">Human-AI Symbiosis</h3>
         <p class="pillar-content">
-          Staying at the frontier of AI capabilities through active research and experimentation.
-          I evaluate emerging technologies, conduct rigorous testing, and identify opportunities
-          to leverage cutting-edge techniques for practical business applications.
+          Exploring the duality of AI—balancing deep technical execution with the philosophical impact of
+          Human Amplification. Designing systems that enhance rather than replace human capability.
         </p>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-number">Pillar 04</div>
-        <h3 class="pillar-title">Technical Transformation</h3>
+        <h3 class="pillar-title">AI-First Transformation</h3>
         <p class="pillar-content">
-          Orchestrating organization-wide technical evolution. I design and execute transformation
-          strategies that modernize legacy systems, establish best practices, and build internal
-          capabilities that enable teams to innovate independently.
+          Authoring strategic frameworks (like the 'AI-First Company' paper) to transition organizations
+          into AI-native environments. Designing transformation roadmaps that balance innovation with operational stability.
         </p>
       </div>
     </div>
 
+    <!-- The Human Perspective -->
+    <div class="spacer"></div>
+
+    <div class="philosophical-section">
+      <h2 style="margin-top: 0;">The Human Perspective</h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
+        In an era of rapid automation, my work is driven by the conviction that AI should
+        <strong>amplify human potential</strong>, not replace it. I analyze both the immense positive
+        potential and the ethical, philosophical challenges of AI to help businesses navigate this
+        revolution with a balanced, long-term vision.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
+        The question isn't whether to adopt AI—it's how to integrate it in ways that preserve what makes
+        us uniquely human: creativity, empathy, and strategic thinking. Technology should serve humanity,
+        not the other way around.
+      </p>
+    </div>
+
     <!-- Contact Section -->
-    <div class="philosophical-section" style="margin-top: 5rem;">
+    <div class="philosophical-section" style="margin-top: 3rem;">
       <h2 style="margin-top: 0;">Let's Connect</h2>
       <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
         Interested in discussing AI strategy, technical architecture, or potential collaboration?

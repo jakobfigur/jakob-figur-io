@@ -3,8 +3,6 @@ title: "Engineering Excellence in Modern Systems"
 date: "2024-12-25"
 ---
 
-# Engineering Excellence in Modern Systems
-
 ## Building for Scale
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.

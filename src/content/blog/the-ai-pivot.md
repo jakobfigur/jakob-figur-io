@@ -3,8 +3,6 @@ title: "The AI Pivot: From Software Engineering to Agentic Intelligence"
 date: "2024-12-15"
 ---
 
-# The AI Pivot: From Software Engineering to Agentic Intelligence
-
 ## The Fundamental Shift
 
 For years, we've been building software the same way: writing explicit rules, designing workflows, hardcoding logic. Every edge case required another if-statement. Every new feature demanded more code. We were teaching computers *how* to do things, step by meticulous step.
